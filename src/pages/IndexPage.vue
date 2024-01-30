@@ -72,7 +72,7 @@ const imagenes = ref([
     <!-- Intro -->
     <div id="intro" class="flex column items-center justify-center">
       <img alt="Fulcro" src="../assets/logo-fulcro-home.jpeg" style="width: 400px; height: 400px">
-      <p>Dame un punto de apoyo y moveré el mundo.</p>
+      <p class="text-center">Dame un punto de apoyo y moveré el mundo.</p>
       <span class="text-italic">(Arquímedes 287-212 AC)</span>
     </div>
 
@@ -96,6 +96,9 @@ const imagenes = ref([
 <style lang="scss">
 #intro {
   height: 100vh;
+  font-family: $montserrat;
+  color: $blue-10;
+
 }
 
 #marcas {

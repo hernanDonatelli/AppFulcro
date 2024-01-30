@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="footer" class="q-px-md q-pt-xl q-pb-md bg-blue-10">
+  <section id="footer" class="q-px-md q-pt-xl q-pb-md">
     <div class="row justify-center main-container">
       <div class="col-12">
         <div class="row items-center justify-between">
@@ -40,7 +40,7 @@ onMounted(() => {
     </div>
 
     <div class="copy row justify-center q-mt-lg">
-      <p class="text-center q-mb-none">Fulcro Foods & Retails © Copyright {{ oldYear }} - {{ actualYear }}.</p>
+      <p class="text-center q-mb-none">Fulcro Foods & Retails © Copyright {{ actualYear }}.</p>
       <p class="text-center q-mb-none">Todos los derechos reservados</p>
     </div>
   </section>
@@ -49,8 +49,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #footer {
+  background-color: #0a0c29;
+  font-family: $montserrat;
+  font-size: clamp(.9rem, 1.3vw, 2rem);
   color: #82b1ff;
-  font-size: clamp(1rem, 1.5vw, 3rem);
 
   .copy {
     font-size: clamp(.8rem, 1.2vw, 1.2rem);
@@ -63,7 +65,11 @@ onMounted(() => {
     order: 3;
 
     a {
-      font-size: clamp(1rem, 1.5vw, 3rem);
+
+      i{
+        font-size: clamp(2.5rem, 3vw, 4rem);
+
+      }
     }
 
     a {

@@ -129,7 +129,7 @@ const contact = () => {
 
   .intro-text {
     position: relative;
-    margin-top: -15rem;
+    margin-top: -10rem;
 
     h4 {
       font-family: $taviraj;

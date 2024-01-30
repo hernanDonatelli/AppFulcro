@@ -7,47 +7,47 @@ const imagenes = ref([
 
   {
     marca: 'Masseube',
-    src: 'src/assets/marcas/masseube.jpg',
+    src: '/marcas/masseube.jpg',
     tiempo: 250
   },
   {
     marca: 'Chocolate Colonial',
-    src: 'src/assets/marcas/colonial.jpg',
+    src: '/marcas/colonial.jpg',
     tiempo: 500
   },
   {
     marca: 'Inti Zen',
-    src: 'src/assets/marcas/inti-zen.jpg',
+    src: '/marcas/inti-zen.jpg',
     tiempo: 750
   },
   {
     marca: 'Molé',
-    src: 'src/assets/marcas/mole.jpg',
+    src: '/marcas/mole.jpg',
     tiempo: 1000
   },
   {
     marca: 'Samkya',
-    src: 'src/assets/marcas/samkya.jpg',
+    src: '/marcas/samkya.jpg',
     tiempo: 1250
   },
   {
     marca: 'Pirenco Patagonia',
-    src: 'src/assets/marcas/pirenco.jpeg',
+    src: '/marcas/pirenco.jpeg',
     tiempo: 1500
   },
   {
     marca: 'Pollo Cocido',
-    src: 'src/assets/marcas/pollo-cocido.jpg',
+    src: '/marcas/pollo-cocido.jpg',
     tiempo: 1750
   },
   {
     marca: 'Pariggi',
-    src: 'src/assets/marcas/pariggi.jpg',
+    src: '/marcas/pariggi.jpg',
     tiempo: 2000
   },
   {
     marca: 'Smoke Cave',
-    src: 'src/assets/marcas/smoke.jpg',
+    src: '/marcas/smoke.jpg',
     tiempo: 2250
   }
 ])
@@ -61,9 +61,9 @@ const contact = () => {
   <q-page>
     <!-- Intro -->
     <div id="intro" class="row items-center justify-center">
-      <div class="logo col-10 col-md-5 flex column items-center">
+      <div class="logo col-10 col-md-5 col-lg-5 flex column items-center">
         <img data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" alt="Fulcro"
-          src="../assets/logo-fulcro-home.jpeg" style="width: 350px; height: 350px">
+          src="/logo-fulcro-home.jpeg" style="width: 300px; height: 300px">
 
         <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" data-aos-easing="ease"
           class="flex column items-center q-mt-md">
@@ -72,9 +72,9 @@ const contact = () => {
         </div>
       </div>
 
-      <div data-aos="zoom-in-left" data-aos-duration="1000" data-aos-easing="ease" data-aos-delay="1000"
-        class="intro-text col-10 col-md-5">
-        <h4 class="q-my-none">Somos tu punto de <span>Apoyo</span> donde <span>Productores y Distribuidores</span>
+      <div data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" data-aos-delay="1000"
+        class="intro-text col-10 col-md-5 col-lg-6">
+        <h4 class="q-my-none">Somos el punto de <span>Apoyo</span> donde <span>Productores y Distribuidores</span>
           encuentran el mejor apalancamiento en el comercio mayorista regional en alimentos con alto valor agregado.</h4>
 
         <button @click="dialog = true" class="q-mt-lg btn-contact">Contactanos</button>
@@ -129,17 +129,18 @@ const contact = () => {
 
   .intro-text {
     position: relative;
-    margin-top: -10rem;
+    margin-top: -15rem;
 
     h4 {
       font-family: $taviraj;
-      font-size: clamp(1rem, 1.85vw, 3rem);
-      line-height: 2rem;
+      font-size: clamp(1rem, 1.4vw, 3rem);
+      line-height: 1.5rem;
       font-weight: 300;
       font-style: italic;
+      text-align: center;
 
       span {
-        font-size: clamp(1.35rem, 2vw, 2rem);
+        // font-size: clamp(1rem, 1.3vw, 2rem);
         font-weight: 800;
         font-family: $montserrat;
         font-style: normal;
@@ -148,6 +149,9 @@ const contact = () => {
     }
 
     .btn-contact {
+      display: flex;
+      justify-content: center;
+      width: 100%;
       font-family: $montserrat;
       font-size: clamp(1rem, 1.2vw, 2rem);
       text-transform: uppercase;
@@ -175,6 +179,18 @@ const contact = () => {
 
   img {
     max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 599.98px) {
+  #intro {
+    .intro-text {
+
+      .btn-contact {
+        width: 50%;
+        margin: 3rem auto 0;
+      }
+    }
   }
 }
 
@@ -216,6 +232,18 @@ const contact = () => {
 }
 
 @media screen and (min-width: 1599.98px) {
+
+  #intro{
+
+    .intro-text {
+
+      h4{
+        font-size: clamp(1rem, 1.85vw, 3rem);
+        line-height: 2.3rem;
+      }
+    }
+  }
+
   #marcas {
     max-width: 1100px;
 

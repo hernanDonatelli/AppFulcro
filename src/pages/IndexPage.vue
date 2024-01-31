@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 import FooterComponent from 'src/components/FooterComponent.vue';
 
+const nombre = ref(null)
+const email = ref(null)
+const mobile = ref(null)
 const dialog = ref(false)
 const imagenes = ref([
 
@@ -51,9 +54,20 @@ const imagenes = ref([
     tiempo: 2250
   }
 ])
+const rulesEmail = [
+  (v) => !!v || "El e-mail es requerido",
+  (v) => /.+@.+\..+/.test(v) || "El e-mail debe ser válido",
+];
+const nombreRules = [
+  (v) => !!v || "Nombre es requerido",
+  (v) => (v && v.length <= 30) || "El nombre debe contener menos de 30 caracteres",
+];
+const rulesMobile = [
+  (v) => !!v || "El numero de móvil es requerido",
+];
 
-const contact = () => {
-  console.log('abriendo modal imaginario');
+const enviarMensaje = () => {
+  console.log('enviando mensaje');
 }
 </script>
 
@@ -62,8 +76,8 @@ const contact = () => {
     <!-- Intro -->
     <div id="intro" class="row items-center justify-center">
       <div class="logo col-10 col-md-5 col-lg-5 flex column items-center">
-        <img data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" alt="Fulcro"
-          src="/logo-fulcro-home.jpeg" style="width: 300px; height: 300px">
+        <img data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease" alt="Fulcro" src="/logo-fulcro-home.jpeg"
+          style="width: 300px; height: 300px">
 
         <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" data-aos-easing="ease"
           class="flex column items-center q-mt-md">
@@ -78,19 +92,43 @@ const contact = () => {
           encuentran el mejor apalancamiento en el comercio mayorista regional en alimentos con alto valor agregado.</h4>
 
         <button @click="dialog = true" class="q-mt-lg btn-contact">Contactanos</button>
+
         <!-- Modal de contacto -->
         <q-dialog v-model="dialog">
-          <q-card>
-            <q-card-section class="row items-center q-pb-none">
-              <div class="text-body1">Completá estos pocos datos y te contactaremos a la brevedad.</div>
-              <q-space />
-              <q-btn icon="close" flat round dense v-close-popup />
+          <q-card style="width: 400px; max-width: 85vh" class="bg-blue-grey-10">
+            <q-card-section class="row items-center q-pb-none flex items-center justify-between">
+              <p style="font-family: 'Taviraj'; font-size: clamp(1.5rem, 1.5vw, 2rem);" class="contact-title text-white q-mb-none">Sigamos en Contacto</p>
+              <q-btn icon="close" color="blue-grey-8" flat round dense v-close-popup />
             </q-card-section>
 
             <q-card-section>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet
-              porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro
-              labore.
+              <q-form @submit.prevent="enviarMensaje">
+                <hr>
+                <q-input dark bg-color="blue-grey-9" filled dense color="blue-10" class="q-mt-lg" type="text"
+                  v-model.trim="nombre" label="Nombre *" lazy-rules :rules="nombreRules">
+                  <template v-slot:append>
+                    <q-icon name="las la-at" />
+                  </template>
+                </q-input>
+
+                <q-input dark bg-color="blue-grey-9" filled dense color="blue-10" type="email"
+                  v-model.trim="email" label="Mail *" lazy-rules :rules="rulesEmail">
+                  <template v-slot:append>
+                    <q-icon name="las la-at" />
+                  </template>
+                </q-input>
+
+                <q-input dark bg-color="blue-grey-9" filled dense color="blue-10" type="number" v-model.trim="mobile"
+                  label="Telefono" lazy-rules :rules="rulesMobile">
+                  <template v-slot:append>
+                    <q-icon name="las la-phone" />
+                  </template>
+                </q-input>
+
+                <div class="q-ml-none flex justify-center">
+                  <q-btn label="Enviar" padding="7px 40px" outline color="white" type="submit" class="btn-contact" />
+                </div>
+              </q-form>
             </q-card-section>
           </q-card>
         </q-dialog>
@@ -118,6 +156,10 @@ const contact = () => {
 <style lang="scss">
 #intro {
   height: 100vh;
+
+  p.contact-title{
+    font-family: $montserrat;
+  }
 
   .logo {
     font-family: $taviraj;
@@ -233,11 +275,11 @@ const contact = () => {
 
 @media screen and (min-width: 1599.98px) {
 
-  #intro{
+  #intro {
 
     .intro-text {
 
-      h4{
+      h4 {
         font-size: clamp(1rem, 1.85vw, 3rem);
         line-height: 2.3rem;
       }
@@ -248,4 +290,5 @@ const contact = () => {
     max-width: 1100px;
 
   }
-}</style>
+}
+</style>
